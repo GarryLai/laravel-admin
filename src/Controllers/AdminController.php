@@ -47,6 +47,11 @@ class AdminController extends Controller
      */
     public function index(Content $content)
     {
+        $grid = $this->grid();
+        $exporter = new \ReflectionClass(\Encore\Admin\Grid\Exporter::class);
+        if(in_array(request($exporter->getStaticPropertyValue('queryName')), [$exporter->getConstant('SCOPE_ALL'), $exporter->getConstant('SCOPE_CURRENT_PAGE'), $exporter->getConstant('SCOPE_SELECTED_ROWS')]))
+            return $grid->exportRequest();
+        
         return $content
             ->title($this->title())
             ->description($this->description['index'] ?? trans('admin.list'))
