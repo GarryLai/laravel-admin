@@ -57,7 +57,7 @@ class Pjax
         try{
             exit;
         } catch (Exception $e) {
-            session->forget('toastr');
+            session()->forget('toastr');
         }
     }
 
