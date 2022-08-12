@@ -183,10 +183,7 @@ class CsvExporter extends AbstractExporter
             });
             fclose($handle);
         };
-
-        response()->stream($response, 200, $this->getHeaders())->send();
-
-        exit;
+        return response()->stream($response, 200, $this->getHeaders());
     }
 
     /**
