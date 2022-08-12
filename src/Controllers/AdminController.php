@@ -4,7 +4,6 @@ namespace Encore\Admin\Controllers;
 
 use Encore\Admin\Layout\Content;
 use Illuminate\Routing\Controller;
-use Encore\Admin\Grid\Exporter;
 
 class AdminController extends Controller
 {
@@ -48,11 +47,6 @@ class AdminController extends Controller
      */
     public function index(Content $content)
     {
-        if (request(Exporter::$queryName)) {
-            $grid = $this->grid();
-            return $grid->handleExportRequest(true);
-        }
-        
         return $content
             ->title($this->title())
             ->description($this->description['index'] ?? trans('admin.list'))
