@@ -84,11 +84,13 @@ class Permission
      */
     public static function error()
     {
-        $response = response(Admin::content());
+        $response = response(Admin::content()->withError(trans('admin.deny')));
 
         if (!request()->pjax() && request()->ajax()) {
             abort(403, trans('admin.deny'));
         }
+
+		session()->forget('error');
 
         Pjax::respond($response);
     }
