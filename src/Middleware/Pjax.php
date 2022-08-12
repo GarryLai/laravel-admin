@@ -54,11 +54,11 @@ class Pjax
 
         (new static())->handle(Request::capture(), $next)->send();
 		
-		try{
-			exit;
-		} catch (Exception $e) {
-			//
-		}
+        try{
+            exit;
+        } catch (Exception $e) {
+            session->forget('toastr');
+        }
     }
 
     /**
