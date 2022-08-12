@@ -48,12 +48,10 @@ class Pjax
     public static function respond(Response $response)
     {
         $next = function () use ($response) {
-            return $response;
+            return redirect()->route('admin.home');
         };
 
         (new static())->handle(Request::capture(), $next)->send();
-
-        exit;
     }
 
     /**
