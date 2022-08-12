@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\HttpFoundation\Response;
+use Exception;
 
 class Pjax
 {
@@ -48,10 +49,16 @@ class Pjax
     public static function respond(Response $response)
     {
         $next = function () use ($response) {
-            return redirect()->route('admin.home');
+            return $response;
         };
 
         (new static())->handle(Request::capture(), $next)->send();
+		
+		try{
+			exit;
+		} catch (Exception $e) {
+			//
+		}
     }
 
     /**
