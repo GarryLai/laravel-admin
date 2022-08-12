@@ -141,11 +141,15 @@ class CsvExporter extends AbstractExporter
             $this->filename = $this->getTable();
         }
 
-        return [
+        $headers = [
             'Content-Encoding'    => 'UTF-8',
             'Content-Type'        => 'text/csv;charset=UTF-8',
             'Content-Disposition' => "attachment;filename=\"{$this->filename}.csv\"",
         ];
+		
+        if(defined('SWOOLE_VERSION'))
+            unset($headers['Content-Encoding']);
+        return $headers;
     }
 
     /**
