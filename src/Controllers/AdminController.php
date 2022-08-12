@@ -4,6 +4,7 @@ namespace Encore\Admin\Controllers;
 
 use Encore\Admin\Layout\Content;
 use Illuminate\Routing\Controller;
+use Encore\Admin\Grid\Exporter;
 
 class AdminController extends Controller
 {
