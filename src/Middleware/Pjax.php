@@ -54,7 +54,7 @@ class Pjax
 
         (new static())->handle(Request::capture(), $next)->send();
 		
-        abort(response('<script>swal(\''.trans('admin.deny').'\');</script>'));
+        abort(response(''));
     }
 
     /**
