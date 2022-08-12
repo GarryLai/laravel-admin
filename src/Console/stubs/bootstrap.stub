@@ -19,3 +19,14 @@
  */
 
 Encore\Admin\Form::forget(['map', 'editor']);
+
+Encore\Admin\Grid::macro('exportRequest', function () {
+    // clear output buffer.
+    if (ob_get_length()) {
+        ob_end_clean();
+    }
+
+    $this->disablePagination();
+
+    return $this->getExporter(request(Encore\Admin\Grid\Exporter::$queryName))->export();
+});
