@@ -1,3 +1,6 @@
+# 此客製化版本修改內容
+1. 兼容Laravel Ocatne + Swoole
+
 <p align="center">
 <a href="https://laravel-admin.org/">
 <img src="https://laravel-admin.org/images/logo002.png" alt="laravel-admin">
