@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\HttpFoundation\Response;
+use Exception;
 
 class Pjax
 {
@@ -55,9 +56,9 @@ class Pjax
 	
         //abort(response(''));
         
-        if (ENV=='php') {
+        try {
             exit();
-        } else {
+        } catch (Exception $e) {
             throw new \Swoole\ExitException();
         }
     }
