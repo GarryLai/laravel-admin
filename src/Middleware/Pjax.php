@@ -52,8 +52,14 @@ class Pjax
         };
 
         (new static())->handle(Request::capture(), $next)->send();
-		
-        abort(response(''));
+	
+        //abort(response(''));
+        
+        if (ENV=='php') {
+            exit();
+        } else {
+            throw new \Swoole\ExitException();
+        }
     }
 
     /**
