@@ -46,7 +46,7 @@ class ExportSeedCommand extends Command
             'TableRoleMenu'        => config('admin.database.role_menu_table'),
             'TableRolePermissions' => config('admin.database.role_permissions_table'),
 
-            'ArrayMenu'       => $this->getTableDataArrayAsString(config('admin.database.menu_table'), $exceptFields),
+            'ArrayMenu'       => $this->getTableDataArrayAsString(config('admin.database.menu_table'), ['created_at', 'updated_at']),
             'ArrayPermission' => $this->getTableDataArrayAsString(config('admin.database.permissions_table'), $exceptFields),
             'ArrayRole'       => $this->getTableDataArrayAsString(config('admin.database.roles_table'), $exceptFields),
 
