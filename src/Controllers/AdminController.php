@@ -49,7 +49,7 @@ class AdminController extends Controller
     {
         $grid = $this->grid();
         $exporter = new \ReflectionClass(\Encore\Admin\Grid\Exporter::class);
-        if(in_array(request($exporter->getStaticPropertyValue('queryName')), [$exporter->getConstant('SCOPE_ALL'), $exporter->getConstant('SCOPE_CURRENT_PAGE'), $exporter->getConstant('SCOPE_SELECTED_ROWS')]))
+        if(request()->get('_export_'))
             return $grid->exportRequest();
         
         return $content
